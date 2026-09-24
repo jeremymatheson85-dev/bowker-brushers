@@ -4,35 +4,231 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Bowker Brushers</title>
-<link rel="icon" href="/bowker-brushers/icon.png">
+<meta name="description" content="A two-minute toothbrushing game for kids aged 3 to 8. A buddy shows them where to brush, every brush moves them across a magical kingdom. No ads, no purchases, no tracking.">
+<meta property="og:title" content="Bowker Brushers: two minutes, twice a day, made fun">
+<meta property="og:description" content="A toothbrushing game for kids aged 3 to 8. No ads, no purchases, no tracking.">
+<meta property="og:image" content="https://jeremymatheson85-dev.github.io/bowker-brushers/img/jess-keely.png">
+<link rel="icon" href="img/icon.png">
+<link rel="apple-touch-icon" href="img/icon.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Nunito:wght@500;700;800;900&display=swap" rel="stylesheet">
 <style>
-:root { --mint:#40CAA4; --ink:#1F2A37; --muted:#5B6675; --paper:#F6F7FA; --card:#fff; --line:#E3E7EE; }
-@media (prefers-color-scheme: dark) { :root { --ink:#E8ECF2; --muted:#A3ADBB; --paper:#12161C; --card:#1A2029; --line:#2A323E; } }
+:root {
+  --mint:#40CAA4; --mint-deep:#23A886; --mint-soft:#E3F7F0;
+  --ink:#1F2A37; --muted:#5B6675; --paper:#F6F7FA; --card:#fff; --line:#E3E7EE;
+  --lav:#EDE7FF; --lav-ink:#6B4FD8; --coral:#FFE6E0; --coral-ink:#E0573B;
+  --amber:#FFF2D6; --amber-ink:#B7791F; --sky:#E1F1FF; --sky-ink:#2B7BC0;
+  --shadow:0 18px 40px rgba(20,40,60,.08);
+}
 * { box-sizing:border-box; }
-body { margin:0; background:var(--paper); color:var(--ink); font:17px/1.6 -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif; }
-main { max-width:760px; margin:0 auto; padding:32px 16px 64px; }
-header { display:flex; align-items:center; gap:14px; margin-bottom:24px; }
-header img { width:56px; height:56px; border-radius:13px; }
-header a { color:inherit; text-decoration:none; font-weight:800; font-size:20px; }
-.card { background:var(--card); border-radius:20px; padding:24px; box-shadow:0 10px 30px rgba(20,30,50,.06); }
-h1 { font-size:30px; line-height:1.2; margin:0 0 8px; }
-h2 { font-size:21px; margin:32px 0 8px; }
-a { color:var(--mint); }
-.table { overflow-x:auto; }
-table { border-collapse:collapse; width:100%; font-size:15px; }
-th, td { text-align:left; vertical-align:top; padding:10px 8px; border-bottom:1px solid var(--line); }
-th { color:var(--muted); font-weight:600; }
-footer { color:var(--muted); font-size:14px; margin-top:24px; }
+html { scroll-behavior:smooth; }
+html, body { overflow-x:clip; }
+body { margin:0; background:var(--paper); color:var(--ink); font:18px/1.6 Nunito, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif; }
+img { max-width:100%; display:block; }
+a { color:var(--mint-deep); }
+.wrap { max-width:1120px; margin:0 auto; padding:0 20px; }
+
+nav { display:flex; align-items:center; justify-content:space-between; padding:20px 0; }
+.brand { display:flex; align-items:center; gap:12px; font-weight:900; font-size:21px; color:var(--ink); text-decoration:none; }
+.brand img { width:44px; height:44px; border-radius:11px; box-shadow:0 4px 12px rgba(0,0,0,.08); }
+nav .links a { color:var(--muted); text-decoration:none; font-weight:700; margin-left:22px; font-size:16px; }
+
+.hero { display:grid; grid-template-columns:1.05fr .95fr; gap:40px; align-items:center; padding:36px 0 72px; }
+.pill { display:inline-block; background:var(--mint-soft); color:var(--mint-deep); font-weight:800; font-size:14px; padding:6px 14px; border-radius:999px; letter-spacing:.02em; }
+h1 { font-size:clamp(38px, 6vw, 62px); line-height:1.05; margin:18px 0 18px; font-weight:900; letter-spacing:-.02em; }
+h1 span { color:var(--mint); }
+.lede { font-size:21px; color:var(--muted); max-width:520px; margin:0 0 28px; }
+.cta { display:flex; flex-wrap:wrap; gap:14px; align-items:center; }
+.btn { display:inline-flex; align-items:center; gap:10px; background:var(--ink); color:#fff; text-decoration:none; font-weight:800; padding:15px 26px; border-radius:999px; font-size:17px; }
+.btn svg { width:20px; height:20px; fill:#fff; }
+.btn.soon { cursor:default; }
+.note { color:var(--muted); font-size:15px; font-weight:700; }
+.trust { display:flex; flex-wrap:wrap; gap:10px; margin-top:28px; }
+.trust span { background:var(--card); border:1px solid var(--line); border-radius:999px; padding:6px 14px; font-size:15px; font-weight:800; }
+.trust span::before { content:"✓ "; color:var(--mint); }
+
+.phones { position:relative; display:flex; justify-content:center; height:560px; }
+.phone { position:absolute; width:250px; border-radius:36px; border:8px solid #1F2A37; background:#1F2A37; box-shadow:var(--shadow); overflow:hidden; }
+.phone img { border-radius:28px; }
+.phone.a { transform:rotate(-7deg) translate(-120px, 30px); z-index:1; }
+.phone.b { z-index:2; }
+.phone.c { transform:rotate(7deg) translate(120px, 30px); z-index:1; }
+
+section { padding:72px 0; }
+.section-head { text-align:center; max-width:640px; margin:0 auto 44px; }
+h2 { font-size:clamp(30px, 4vw, 42px); line-height:1.15; margin:0 0 12px; font-weight:900; letter-spacing:-.01em; }
+.section-head p { color:var(--muted); margin:0; font-size:19px; }
+
+.steps { display:grid; grid-template-columns:repeat(3, 1fr); gap:22px; }
+.card { background:var(--card); border-radius:26px; padding:28px; box-shadow:var(--shadow); }
+.num { width:44px; height:44px; border-radius:14px; display:grid; place-items:center; font-weight:900; font-size:20px; margin-bottom:14px; }
+.card h3 { margin:0 0 6px; font-size:21px; font-weight:900; }
+.card p { margin:0; color:var(--muted); font-size:17px; }
+.t-lav { background:var(--lav); color:var(--lav-ink); }
+.t-coral { background:var(--coral); color:var(--coral-ink); }
+.t-amber { background:var(--amber); color:var(--amber-ink); }
+.t-sky { background:var(--sky); color:var(--sky-ink); }
+.t-mint { background:var(--mint-soft); color:var(--mint-deep); }
+
+.gallery { display:flex; gap:22px; overflow-x:auto; padding:8px 4px 24px; scroll-snap-type:x mandatory; }
+.gallery figure { margin:0; flex:0 0 230px; scroll-snap-align:center; text-align:center; }
+.gallery img { border-radius:26px; box-shadow:var(--shadow); }
+.gallery figcaption { margin-top:12px; font-weight:800; font-size:16px; }
+
+.features { display:grid; grid-template-columns:repeat(2, 1fr); gap:22px; }
+.features ul { margin:10px 0 0; padding:0; list-style:none; }
+.features li { padding:6px 0 6px 30px; position:relative; color:var(--muted); font-size:17px; }
+.features li::before { content:""; position:absolute; left:4px; top:14px; width:12px; height:12px; border-radius:50%; background:currentColor; opacity:.35; }
+
+.safe { background:var(--ink); color:#fff; border-radius:34px; padding:56px 44px; display:grid; grid-template-columns:1fr 1fr; gap:40px; align-items:center; }
+.safe h2 { color:#fff; }
+.safe p { color:#C9D2DE; }
+.safe .grid { display:grid; grid-template-columns:1fr 1fr; gap:14px; }
+.safe .grid div { background:rgba(255,255,255,.07); border-radius:18px; padding:16px 18px; font-weight:800; }
+.safe .grid div small { display:block; color:#AEB8C6; font-weight:600; font-size:14px; margin-top:2px; }
+
+.clinic { display:grid; grid-template-columns:.9fr 1.1fr; gap:48px; align-items:center; }
+.clinic p { color:var(--muted); font-size:19px; }
+
+footer { padding:40px 0 56px; color:var(--muted); font-size:15px; display:flex; flex-wrap:wrap; gap:18px; justify-content:space-between; border-top:1px solid var(--line); margin-top:32px; }
+footer a { color:var(--muted); font-weight:700; margin-right:18px; }
+
+@media (max-width: 880px) {
+  .hero, .safe, .clinic { grid-template-columns:1fr; }
+  .phones { height:470px; margin-top:12px; }
+  .phone { width:205px; }
+  .phone.a { transform:rotate(-7deg) translate(-90px, 30px); }
+  .phone.c { transform:rotate(7deg) translate(90px, 30px); }
+  .steps, .features { grid-template-columns:1fr; }
+  .safe { padding:40px 24px; }
+  nav .links { display:none; }
+}
+@media (max-width: 480px) {
+  .phones { height:400px; }
+  .phone { width:170px; border-width:6px; border-radius:28px; }
+  .phone.a { transform:rotate(-7deg) translate(-70px, 26px); }
+  .phone.c { transform:rotate(7deg) translate(70px, 26px); }
+  .safe .grid { grid-template-columns:1fr; }
+}
 </style>
 </head>
-<body><main>
-<header><img src="/bowker-brushers/icon.png" alt=""><a href="/bowker-brushers/">Bowker Brushers</a></header>
-<div class="card">
-<h1>Bowker Brushers</h1>
-<p>Two minutes, twice a day, made fun. A toothbrushing game for kids aged 3 to 8, with a buddy who shows them
-where to brush next and a kingdom to explore one brush at a time.</p>
-<p>No ads, no purchases, no tracking.</p>
-<p><a href="/bowker-brushers/support/">Support</a> · <a href="/bowker-brushers/privacy/">Privacy policy</a></p>
+<body>
+<div class="wrap">
+  <nav>
+    <a class="brand" href="./"><img src="img/icon.png" alt="">Bowker Brushers</a>
+    <div class="links"><a href="#how">How it works</a><a href="#safe">Safety</a><a href="support/">Support</a></div>
+  </nav>
+
+  <header class="hero">
+    <div>
+      <span class="pill">For kids aged 3 to 8</span>
+      <h1>Two minutes, twice a day, <span>made fun.</span></h1>
+      <p class="lede">Bowker Brushers turns toothbrushing into a game kids actually want to play. A buddy shows them exactly where to brush next, and every brush moves them across a magical kingdom.</p>
+      <div class="cta">
+        <span class="btn soon" aria-disabled="true"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M16.37 12.6c-.02-2.14 1.75-3.17 1.83-3.22-1-1.45-2.55-1.65-3.1-1.68-1.32-.13-2.58.78-3.25.78-.67 0-1.7-.76-2.8-.74-1.44.02-2.77.84-3.51 2.13-1.5 2.6-.38 6.44 1.07 8.55.71 1.03 1.56 2.19 2.67 2.15 1.07-.04 1.48-.69 2.77-.69 1.3 0 1.66.69 2.8.67 1.15-.02 1.88-1.05 2.59-2.09.81-1.2 1.15-2.36 1.17-2.42-.03-.01-2.24-.86-2.24-3.44zM14.25 6.3c.59-.72.99-1.71.88-2.7-.85.03-1.88.57-2.49 1.28-.55.63-1.03 1.64-.9 2.61.95.07 1.92-.48 2.51-1.19z"/></svg>Coming soon to the App Store</span>
+        <span class="note">Free. No ads, no purchases.</span>
+      </div>
+      <div class="trust"><span>No ads</span><span>No in-app purchases</span><span>No tracking</span></div>
+    </div>
+    <div class="phones" aria-hidden="true">
+      <div class="phone a"><img src="img/02-kingdom.jpg" alt=""></div>
+      <div class="phone b"><img src="img/01-brushing.jpg" alt=""></div>
+      <div class="phone c"><img src="img/03-celebration.jpg" alt=""></div>
+    </div>
+  </header>
 </div>
-<footer><a href="/bowker-brushers/privacy/">Privacy policy</a> · <a href="/bowker-brushers/support/">Support</a></footer>
-</main></body></html>
+
+<section id="how">
+  <div class="wrap">
+    <div class="section-head">
+      <h2>Brushing, one step at a time</h2>
+      <p>Pick a buddy, press start, and brush along.</p>
+    </div>
+    <div class="steps">
+      <div class="card"><div class="num t-lav">1</div><h3>Pick a buddy</h3><p>Each child chooses an animal buddy of their own, who brushes right along with them.</p></div>
+      <div class="card"><div class="num t-coral">2</div><h3>Brush along</h3><p>A mouth map lights up where to go next: top, bottom, left, right, outside, inside and the chewing tops.</p></div>
+      <div class="card"><div class="num t-amber">3</div><h3>Move forward</h3><p>Every brush takes a step across the kingdom, with gems, treasure chests and surprises along the way.</p></div>
+    </div>
+  </div>
+</section>
+
+<section>
+  <div class="wrap">
+    <div class="section-head">
+      <h2>A peek inside</h2>
+    </div>
+    <div class="gallery">
+      <figure><img src="img/01-brushing.jpg" alt="A brushing session: an elephant buddy above a mouth map showing the top-left inside zone, with 1:44 left" loading="lazy"><figcaption>Coached, zone by zone</figcaption></figure>
+      <figure><img src="img/02-kingdom.jpg" alt="The Candy Cloud Kingdom map with the buddy partway along the path" loading="lazy"><figcaption>A kingdom to explore</figcaption></figure>
+      <figure><img src="img/03-celebration.jpg" alt="The celebration screen after a brush, showing gems earned" loading="lazy"><figcaption>Rewards for every brush</figcaption></figure>
+      <figure><img src="img/04-shop.jpg" alt="The hat shop, with a party hat, crown, wizard hat, pirate hat and space helmet" loading="lazy"><figcaption>Hats and treats to earn</figcaption></figure>
+      <figure><img src="img/05-parent-area.jpg" alt="The parent area calendar showing a week of morning and night brushes" loading="lazy"><figcaption>Progress for grown-ups</figcaption></figure>
+    </div>
+  </div>
+</section>
+
+<section>
+  <div class="wrap features">
+    <div class="card">
+      <div class="num t-mint">★</div>
+      <h3>Rewards that keep them coming back</h3>
+      <ul style="color:var(--mint-deep)">
+        <li>Gems for every brush, and bonus gems for morning and night</li>
+        <li>Hats, backgrounds and treats for their buddy</li>
+        <li>Keep a streak going to hatch new friends</li>
+        <li>Collect a real dentist's kit, one tool at a time</li>
+      </ul>
+    </div>
+    <div class="card">
+      <div class="num t-sky">♥</div>
+      <h3>Made for families</h3>
+      <ul style="color:var(--sky-ink)">
+        <li>Several brushers on one device, each with their own buddy</li>
+        <li>Younger kids get a grown-up turn built into the session</li>
+        <li>Reminders you set, scheduled on the device</li>
+        <li>Spoken coaching, or quiet mode for early mornings</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<section id="safe">
+  <div class="wrap">
+    <div class="safe">
+      <div>
+        <h2>Safe by design</h2>
+        <p>Bowker Brushers works fully without an account, and in that mode nothing leaves your device. Accounts, settings and deleting data all sit behind a parental gate.</p>
+        <p><a href="privacy/" style="color:#7FE3C6;font-weight:800">Read the privacy policy →</a></p>
+      </div>
+      <div class="grid">
+        <div>No ads<small>Not now, not ever</small></div>
+        <div>No purchases<small>Nothing to buy inside</small></div>
+        <div>No tracking<small>No analytics SDKs</small></div>
+        <div>No real names<small>Nicknames only, no photos</small></div>
+        <div>No account needed<small>Sync is optional</small></div>
+        <div>Delete anytime<small>Right inside the app</small></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section>
+  <div class="wrap clinic">
+    <img src="img/jess-keely.png" alt="Paper-cut illustration of two smiling dentists in scrubs, each holding a toothbrush" loading="lazy">
+    <div>
+      <span class="pill">Made with Bowker Creek Dental</span>
+      <h2 style="margin-top:14px">From a family dental clinic in Victoria, BC</h2>
+      <p>Bowker Brushers was made with Bowker Creek Dental. Families of the clinic can also earn real prize tickets to redeem at their next visit.</p>
+    </div>
+  </div>
+</section>
+
+<div class="wrap">
+  <footer>
+    <div><a href="support/">Support</a><a href="privacy/">Privacy policy</a></div>
+    <div>© 2026 Jeremy Matheson</div>
+  </footer>
+</div>
+</body>
+</html>
