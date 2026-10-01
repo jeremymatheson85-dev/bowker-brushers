@@ -1,0 +1,3 @@
+User-agent: *
+Allow: /
+Sitemap: https://sparklebuddies.ca/sitemap.xml

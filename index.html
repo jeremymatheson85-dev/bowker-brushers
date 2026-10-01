@@ -1,234 +1,44 @@
 <!doctype html>
-<html lang="en">
+<html lang="en-CA">
 <head>
-<meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Sparkle Buddies</title>
-<meta name="description" content="A two-minute toothbrushing game for kids aged 3 to 8. A buddy shows them where to brush, every brush moves them across a magical kingdom. No ads, no purchases, no tracking.">
-<meta property="og:title" content="Sparkle Buddies: two minutes, twice a day, made fun">
-<meta property="og:description" content="A toothbrushing game for kids aged 3 to 8. No ads, no purchases, no tracking.">
-<meta property="og:image" content="https://jeremymatheson85-dev.github.io/bowker-brushers/img/jess-keely.png">
-<link rel="icon" href="img/icon.png">
-<link rel="apple-touch-icon" href="img/icon.png">
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Nunito:wght@500;700;800;900&display=swap" rel="stylesheet">
-<style>
-:root {
-  --mint:#40CAA4; --mint-deep:#23A886; --mint-soft:#E3F7F0;
-  --ink:#1F2A37; --muted:#5B6675; --paper:#F6F7FA; --card:#fff; --line:#E3E7EE;
-  --lav:#EDE7FF; --lav-ink:#6B4FD8; --coral:#FFE6E0; --coral-ink:#E0573B;
-  --amber:#FFF2D6; --amber-ink:#B7791F; --sky:#E1F1FF; --sky-ink:#2B7BC0;
-  --shadow:0 18px 40px rgba(20,40,60,.08);
-}
-* { box-sizing:border-box; }
-html { scroll-behavior:smooth; }
-html, body { overflow-x:clip; }
-body { margin:0; background:var(--paper); color:var(--ink); font:18px/1.6 Nunito, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif; }
-img { max-width:100%; display:block; }
-a { color:var(--mint-deep); }
-.wrap { max-width:1120px; margin:0 auto; padding:0 20px; }
-
-nav { display:flex; align-items:center; justify-content:space-between; padding:20px 0; }
-.brand { display:flex; align-items:center; gap:12px; font-weight:900; font-size:21px; color:var(--ink); text-decoration:none; }
-.brand img { width:44px; height:44px; border-radius:11px; box-shadow:0 4px 12px rgba(0,0,0,.08); }
-nav .links a { color:var(--muted); text-decoration:none; font-weight:700; margin-left:22px; font-size:16px; }
-
-.hero { display:grid; grid-template-columns:1.05fr .95fr; gap:40px; align-items:center; padding:36px 0 72px; }
-.pill { display:inline-block; background:var(--mint-soft); color:var(--mint-deep); font-weight:800; font-size:14px; padding:6px 14px; border-radius:999px; letter-spacing:.02em; }
-h1 { font-size:clamp(38px, 6vw, 62px); line-height:1.05; margin:18px 0 18px; font-weight:900; letter-spacing:-.02em; }
-h1 span { color:var(--mint); }
-.lede { font-size:21px; color:var(--muted); max-width:520px; margin:0 0 28px; }
-.cta { display:flex; flex-wrap:wrap; gap:14px; align-items:center; }
-.btn { display:inline-flex; align-items:center; gap:10px; background:var(--ink); color:#fff; text-decoration:none; font-weight:800; padding:15px 26px; border-radius:999px; font-size:17px; }
-.btn svg { width:20px; height:20px; fill:#fff; }
-.btn.soon { cursor:default; }
-.note { color:var(--muted); font-size:15px; font-weight:700; }
-.trust { display:flex; flex-wrap:wrap; gap:10px; margin-top:28px; }
-.trust span { background:var(--card); border:1px solid var(--line); border-radius:999px; padding:6px 14px; font-size:15px; font-weight:800; }
-.trust span::before { content:"✓ "; color:var(--mint); }
-
-.phones { position:relative; display:flex; justify-content:center; height:560px; }
-.phone { position:absolute; width:250px; border-radius:36px; border:8px solid #1F2A37; background:#1F2A37; box-shadow:var(--shadow); overflow:hidden; }
-.phone img { border-radius:28px; }
-.phone.a { transform:rotate(-7deg) translate(-120px, 30px); z-index:1; }
-.phone.b { z-index:2; }
-.phone.c { transform:rotate(7deg) translate(120px, 30px); z-index:1; }
-
-section { padding:72px 0; }
-.section-head { text-align:center; max-width:640px; margin:0 auto 44px; }
-h2 { font-size:clamp(30px, 4vw, 42px); line-height:1.15; margin:0 0 12px; font-weight:900; letter-spacing:-.01em; }
-.section-head p { color:var(--muted); margin:0; font-size:19px; }
-
-.steps { display:grid; grid-template-columns:repeat(3, 1fr); gap:22px; }
-.card { background:var(--card); border-radius:26px; padding:28px; box-shadow:var(--shadow); }
-.num { width:44px; height:44px; border-radius:14px; display:grid; place-items:center; font-weight:900; font-size:20px; margin-bottom:14px; }
-.card h3 { margin:0 0 6px; font-size:21px; font-weight:900; }
-.card p { margin:0; color:var(--muted); font-size:17px; }
-.t-lav { background:var(--lav); color:var(--lav-ink); }
-.t-coral { background:var(--coral); color:var(--coral-ink); }
-.t-amber { background:var(--amber); color:var(--amber-ink); }
-.t-sky { background:var(--sky); color:var(--sky-ink); }
-.t-mint { background:var(--mint-soft); color:var(--mint-deep); }
-
-.gallery { display:flex; gap:22px; overflow-x:auto; padding:8px 4px 24px; scroll-snap-type:x mandatory; }
-.gallery figure { margin:0; flex:0 0 230px; scroll-snap-align:center; text-align:center; }
-.gallery img { border-radius:26px; box-shadow:var(--shadow); }
-.gallery figcaption { margin-top:12px; font-weight:800; font-size:16px; }
-
-.features { display:grid; grid-template-columns:repeat(2, 1fr); gap:22px; }
-.features ul { margin:10px 0 0; padding:0; list-style:none; }
-.features li { padding:6px 0 6px 30px; position:relative; color:var(--muted); font-size:17px; }
-.features li::before { content:""; position:absolute; left:4px; top:14px; width:12px; height:12px; border-radius:50%; background:currentColor; opacity:.35; }
-
-.safe { background:var(--ink); color:#fff; border-radius:34px; padding:56px 44px; display:grid; grid-template-columns:1fr 1fr; gap:40px; align-items:center; }
-.safe h2 { color:#fff; }
-.safe p { color:#C9D2DE; }
-.safe .grid { display:grid; grid-template-columns:1fr 1fr; gap:14px; }
-.safe .grid div { background:rgba(255,255,255,.07); border-radius:18px; padding:16px 18px; font-weight:800; }
-.safe .grid div small { display:block; color:#AEB8C6; font-weight:600; font-size:14px; margin-top:2px; }
-
-.clinic { display:grid; grid-template-columns:.9fr 1.1fr; gap:48px; align-items:center; }
-.clinic p { color:var(--muted); font-size:19px; }
-
-footer { padding:40px 0 56px; color:var(--muted); font-size:15px; display:flex; flex-wrap:wrap; gap:18px; justify-content:space-between; border-top:1px solid var(--line); margin-top:32px; }
-footer a { color:var(--muted); font-weight:700; margin-right:18px; }
-
-@media (max-width: 880px) {
-  .hero, .safe, .clinic { grid-template-columns:1fr; }
-  .phones { height:470px; margin-top:12px; }
-  .phone { width:205px; }
-  .phone.a { transform:rotate(-7deg) translate(-90px, 30px); }
-  .phone.c { transform:rotate(7deg) translate(90px, 30px); }
-  .steps, .features { grid-template-columns:1fr; }
-  .safe { padding:40px 24px; }
-  nav .links { display:none; }
-}
-@media (max-width: 480px) {
-  .phones { height:400px; }
-  .phone { width:170px; border-width:6px; border-radius:28px; }
-  .phone.a { transform:rotate(-7deg) translate(-70px, 26px); }
-  .phone.c { transform:rotate(7deg) translate(70px, 26px); }
-  .safe .grid { grid-template-columns:1fr; }
-}
-</style>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Sparkle Buddies — Little brushes. Big adventures.</title>
+<meta name="description" content="Make brushing time buddy time. A free two-minute toothbrushing adventure for kids aged 3–8, with animal friends, magical kingdoms and no ads or in-app purchases.">
+<link rel="canonical" href="https://sparklebuddies.ca/">
+<meta property="og:type" content="website"><meta property="og:url" content="https://sparklebuddies.ca/">
+<meta property="og:title" content="Sparkle Buddies — Little brushes. Big adventures."><meta property="og:description" content="Two minutes, a little buddy, and a whole world to explore. A free toothbrushing adventure for kids aged 3–8."><meta property="og:image" content="https://sparklebuddies.ca/img/icon.png">
+<meta name="theme-color" content="#edf8ed"><link rel="icon" href="img/icon.png"><link rel="apple-touch-icon" href="img/icon.png">
+<link rel="preload" href="fonts/Baloo2-ExtraBold.ttf" as="font" type="font/ttf" crossorigin><link rel="stylesheet" href="style.css"><script src="script.js" defer></script>
 </head>
 <body>
-<div class="wrap">
-  <nav>
-    <a class="brand" href="./"><img src="img/icon.png" alt="">Sparkle Buddies</a>
-    <div class="links"><a href="#how">How it works</a><a href="#safe">Safety</a><a href="support/">Support</a></div>
-  </nav>
-
-  <header class="hero">
-    <div>
-      <span class="pill">For kids aged 3 to 8</span>
-      <h1>Two minutes, twice a day, <span>made fun.</span></h1>
-      <p class="lede">Sparkle Buddies turns toothbrushing into a game kids actually want to play. A buddy shows them exactly where to brush next, and every brush moves them across a magical kingdom.</p>
-      <div class="cta">
-        <a class="btn" href="https://apps.apple.com/ca/app/id6810033480"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M16.37 12.6c-.02-2.14 1.75-3.17 1.83-3.22-1-1.45-2.55-1.65-3.1-1.68-1.32-.13-2.58.78-3.25.78-.67 0-1.7-.76-2.8-.74-1.44.02-2.77.84-3.51 2.13-1.5 2.6-.38 6.44 1.07 8.55.71 1.03 1.56 2.19 2.67 2.15 1.07-.04 1.48-.69 2.77-.69 1.3 0 1.66.69 2.8.67 1.15-.02 1.88-1.05 2.59-2.09.81-1.2 1.15-2.36 1.17-2.42-.03-.01-2.24-.86-2.24-3.44zM14.25 6.3c.59-.72.99-1.71.88-2.7-.85.03-1.88.57-2.49 1.28-.55.63-1.03 1.64-.9 2.61.95.07 1.92-.48 2.51-1.19z"/></svg>Download on the App Store</a>
-        <span class="note">Free. No ads, no purchases.</span>
-      </div>
-      <div class="trust"><span>No ads</span><span>No in-app purchases</span><span>No tracking</span></div>
-    </div>
-    <div class="phones" aria-hidden="true">
-      <div class="phone a"><img src="img/02-kingdom.jpg" alt=""></div>
-      <div class="phone b"><img src="img/01-brushing.jpg" alt=""></div>
-      <div class="phone c"><img src="img/03-celebration.jpg" alt=""></div>
-    </div>
-  </header>
-</div>
-
-<section id="how">
-  <div class="wrap">
-    <div class="section-head">
-      <h2>Brushing, one step at a time</h2>
-      <p>Pick a buddy, press start, and brush along.</p>
-    </div>
-    <div class="steps">
-      <div class="card"><div class="num t-lav">1</div><h3>Pick a buddy</h3><p>Each child chooses an animal buddy of their own, who brushes right along with them.</p></div>
-      <div class="card"><div class="num t-coral">2</div><h3>Brush along</h3><p>A mouth map lights up where to go next: top, bottom, left, right, outside, inside and the chewing tops.</p></div>
-      <div class="card"><div class="num t-amber">3</div><h3>Move forward</h3><p>Every brush takes a step across the kingdom, with gems, treasure chests and surprises along the way.</p></div>
-    </div>
-  </div>
-</section>
-
-<section>
-  <div class="wrap">
-    <div class="section-head">
-      <h2>A peek inside</h2>
-    </div>
-    <div class="gallery">
-      <figure><img src="img/01-brushing.jpg" alt="A brushing session: an elephant buddy above a mouth map showing the top-left inside zone, with 1:44 left" loading="lazy"><figcaption>Coached, zone by zone</figcaption></figure>
-      <figure><img src="img/02-kingdom.jpg" alt="The Candy Cloud Kingdom map with the buddy partway along the path" loading="lazy"><figcaption>A kingdom to explore</figcaption></figure>
-      <figure><img src="img/03-celebration.jpg" alt="The celebration screen after a brush, showing gems earned" loading="lazy"><figcaption>Rewards for every brush</figcaption></figure>
-      <figure><img src="img/04-shop.jpg" alt="The hat shop, with a party hat, crown, wizard hat, pirate hat and space helmet" loading="lazy"><figcaption>Hats and treats to earn</figcaption></figure>
-      <figure><img src="img/05-parent-area.jpg" alt="The parent area calendar showing a week of morning and night brushes" loading="lazy"><figcaption>Progress for grown-ups</figcaption></figure>
-    </div>
-  </div>
-</section>
-
-<section>
-  <div class="wrap features">
-    <div class="card">
-      <div class="num t-mint">★</div>
-      <h3>Rewards that keep them coming back</h3>
-      <ul style="color:var(--mint-deep)">
-        <li>Gems for every brush, and bonus gems for morning and night</li>
-        <li>Hats, backgrounds and treats for their buddy</li>
-        <li>Keep a streak going to hatch new friends</li>
-        <li>Collect a real dentist's kit, one tool at a time</li>
-      </ul>
-    </div>
-    <div class="card">
-      <div class="num t-sky">♥</div>
-      <h3>Made for families</h3>
-      <ul style="color:var(--sky-ink)">
-        <li>Several brushers on one device, each with their own buddy</li>
-        <li>Younger kids get a grown-up turn built into the session</li>
-        <li>Reminders you set, scheduled on the device</li>
-        <li>Spoken coaching, or quiet mode for early mornings</li>
-      </ul>
-    </div>
-  </div>
-</section>
-
-<section id="safe">
-  <div class="wrap">
-    <div class="safe">
-      <div>
-        <h2>Safe by design</h2>
-        <p>Sparkle Buddies works fully without an account, and in that mode nothing leaves your device. Accounts, settings and deleting data all sit behind a parental gate.</p>
-        <p><a href="privacy/" style="color:#7FE3C6;font-weight:800">Read the privacy policy →</a></p>
-      </div>
-      <div class="grid">
-        <div>No ads<small>Not now, not ever</small></div>
-        <div>No purchases<small>Nothing to buy inside</small></div>
-        <div>No tracking<small>No analytics SDKs</small></div>
-        <div>No real names<small>Nicknames only, no photos</small></div>
-        <div>No account needed<small>Sync is optional</small></div>
-        <div>Delete anytime<small>Right inside the app</small></div>
-      </div>
-    </div>
-  </div>
-</section>
-
-<section>
-  <div class="wrap clinic">
-    <img src="img/jess-keely.png" alt="Paper-cut illustration of two smiling dentists in scrubs, each holding a toothbrush" loading="lazy">
-    <div>
-      <span class="pill">Made with Bowker Creek Dental</span>
-      <h2 style="margin-top:14px">From a family dental clinic in Victoria, BC</h2>
-      <p>Sparkle Buddies was made with Bowker Creek Dental. Families of the clinic can also earn real prize tickets to redeem at their next visit.</p>
-    </div>
-  </div>
-</section>
-
-<div class="wrap">
-  <footer>
-    <div><a href="support/">Support</a><a href="privacy/">Privacy policy</a></div>
-    <div>© 2026 Jeremy Matheson</div>
-  </footer>
-</div>
-</body>
-</html>
+<a class="skip" href="#main">Skip to content</a>
+<header class="header wrap"><a class="brand" href="./" aria-label="Sparkle Buddies home"><span class="brand-star" aria-hidden="true">✦</span><span>Sparkle<br>Buddies<span class="brand-dot">.</span></span></a><nav aria-label="Main navigation"><a href="#adventure">The adventure</a><a href="#grown-ups">For grown-ups</a><a class="button small" href="https://apps.apple.com/ca/app/id6810033480">Get the app <span aria-hidden="true">↗</span></a></nav></header>
+<main id="main">
+<section class="hero wrap" aria-labelledby="hero-title">
+<div class="hero-copy"><p class="eyebrow"><span class="little-spark" aria-hidden="true">✦</span> A little adventure. Twice a day.</p><h1 id="hero-title">Little brushes.<br>Big <span>adventures.</span></h1><p class="intro">Turn “do I have to?” into “my turn!”<br>A two-minute brushing adventure with a little friend cheering them on.</p><a class="button download" href="https://apps.apple.com/ca/app/id6810033480"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M17 12.5c0-2 1.6-3 1.7-3.1-1-1.4-2.5-1.6-3-1.6-1.3-.1-2.5.8-3.2.8-.6 0-1.6-.8-2.7-.7-1.4 0-2.7.8-3.4 2-1.5 2.5-.4 6.3 1 8.3.7 1 1.5 2.1 2.6 2.1s1.5-.7 2.7-.7 1.6.7 2.7.7 1.8-1 2.5-2c.8-1.2 1.1-2.3 1.1-2.4-.1 0-2-.8-2-3.4ZM14.8 6.4c.6-.7 1-1.7.9-2.6-.8 0-1.8.5-2.4 1.2-.5.6-1 1.6-.9 2.5.9.1 1.8-.4 2.4-1.1Z"/></svg><span><small>Download on the</small>App Store</span><span class="download-arrow" aria-hidden="true">↗</span></a><p class="download-note">Free to play. Made for ages 3–8.<br>For iPhone & iPad.</p></div>
+<div class="hero-world" aria-label="Meet Pebble the otter and friends">
+<div class="world-orbit" aria-hidden="true"></div><span class="star star-one" aria-hidden="true">✦</span><span class="star star-two" aria-hidden="true">✧</span><span class="star star-three" aria-hidden="true">✦</span>
+<div class="hello">Your new<br>brush-time bestie<span aria-hidden="true">↘</span></div>
+<img class="hero-buddy buddy-left" src="img/buddies/elephant.webp" alt="Mochi, a blue elephant in a purple shirt" width="512" height="512"><img class="hero-buddy buddy-right" src="img/buddies/fox.webp" alt="Clover the fox" width="512" height="512"><img class="hero-buddy buddy-main" src="img/buddies/otter.webp" alt="Pebble the otter, ready for an adventure" width="512" height="512" fetchpriority="high">
+<div class="brush-sticker"><span aria-hidden="true">✦</span><strong>2 minutes</strong><span>of “I did it!”</span></div><div class="world-ground" aria-hidden="true"></div>
+</div></section>
+<div class="promise-strip"><div class="wrap"><span>Small routine. <strong>So much to smile about.</strong></span><ul><li>No ads</li><li>No in-app purchases</li><li>No tracking</li></ul></div></div>
+<section class="adventure wrap section" id="adventure"><div class="section-heading"><p class="eyebrow">From toothbrush to treasure</p><h2>A tiny routine.<br>A whole world of possibility.</h2><p>Something to look forward to, from the first little brush to the last big grin.</p></div>
+<div class="journey"><article><span class="step">01 / MAKE A FRIEND</span><div class="step-art friends-art"><img src="img/buddies/rabbit.webp" alt="Poppy the rabbit" loading="lazy" width="512" height="512"><img src="img/buddies/red_panda.webp" alt="Sunny the red panda" loading="lazy" width="512" height="512"></div><h3>Every hero needs a buddy.</h3><p>Pick an animal friend to make brushing time their own. Nine little personalities. One very happy toothbrush.</p></article><article><span class="step">02 / BRUSH TOGETHER</span><div class="step-art phone-art"><img src="img/01-brushing.jpg" alt="The app shows where to brush, with Mochi and a two-minute timer" loading="lazy" width="540" height="1173"><span class="mini-label">A little guidance.<br>A lot of encouragement.</span></div><h3>Two minutes. You’ve got this.</h3><p>Follow the mouth map and spoken coaching, one area at a time. Younger brushers get a grown-up turn, too.</p></article><article><span class="step">03 / OFF YOU GO</span><div class="step-art kingdom-art"><img src="img/02-kingdom.jpg" alt="A colourful kingdom with a winding path to explore" loading="lazy" width="540" height="1173"><span class="mini-label">Next stop:<br>something magical.</span></div><h3>A little brush goes a long way.</h3><p>Take another step through a magical kingdom. Earn gems, discover treasures, and dress your buddy for the journey.</p></article></div></section>
+<section class="buddy-section" id="buddies"><div class="wrap buddy-layout"><div class="buddy-display"><span class="buddy-spark" aria-hidden="true">✦</span><img id="selected-buddy" src="img/buddies/otter.webp" alt="Pebble the Otter" width="512" height="512" loading="lazy"><p id="buddy-name" aria-live="polite">Pebble <span>the Otter</span></p></div><div class="buddy-copy"><p class="eyebrow">A friend at the sink</p><h2>Big smiles.<br>Little personalities.</h2><p>Meet the brushing crew. From tiny paws to a very helpful trunk, there’s a buddy for every kind of kid.</p><p class="picker-label" id="picker-label">Who makes you smile? Pick a buddy.</p><div class="buddy-picker" role="group" aria-labelledby="picker-label">
+<button class="buddy-option" type="button" data-buddy="otter" data-name="Pebble" data-animal="Otter" aria-label="Meet Pebble the Otter" aria-pressed="true"><img src="img/buddies/otter.webp" alt="" loading="lazy" width="512" height="512"></button>
+<button class="buddy-option" type="button" data-buddy="fox" data-name="Clover" data-animal="Fox" aria-label="Meet Clover the Fox" aria-pressed="false"><img src="img/buddies/fox.webp" alt="" loading="lazy" width="512" height="512"></button>
+<button class="buddy-option" type="button" data-buddy="rabbit" data-name="Poppy" data-animal="Rabbit" aria-label="Meet Poppy the Rabbit" aria-pressed="false"><img src="img/buddies/rabbit.webp" alt="" loading="lazy" width="512" height="512"></button>
+<button class="buddy-option" type="button" data-buddy="bear" data-name="Maple" data-animal="Bear" aria-label="Meet Maple the Bear" aria-pressed="false"><img src="img/buddies/bear.webp" alt="" loading="lazy" width="512" height="512"></button>
+<button class="buddy-option" type="button" data-buddy="red_panda" data-name="Sunny" data-animal="Red Panda" aria-label="Meet Sunny the Red Panda" aria-pressed="false"><img src="img/buddies/red_panda.webp" alt="" loading="lazy" width="512" height="512"></button>
+<button class="buddy-option" type="button" data-buddy="elephant" data-name="Mochi" data-animal="Elephant" aria-label="Meet Mochi the Elephant" aria-pressed="false"><img src="img/buddies/elephant.webp" alt="" loading="lazy" width="512" height="512"></button>
+<button class="buddy-option" type="button" data-buddy="koala" data-name="Willow" data-animal="Koala" aria-label="Meet Willow the Koala" aria-pressed="false"><img src="img/buddies/koala.webp" alt="" loading="lazy" width="512" height="512"></button>
+<button class="buddy-option" type="button" data-buddy="penguin" data-name="Pip" data-animal="Penguin" aria-label="Meet Pip the Penguin" aria-pressed="false"><img src="img/buddies/penguin.webp" alt="" loading="lazy" width="512" height="512"></button>
+<button class="buddy-option" type="button" data-buddy="turtle" data-name="Fern" data-animal="Turtle" aria-label="Meet Fern the Turtle" aria-pressed="false"><img src="img/buddies/turtle.webp" alt="" loading="lazy" width="512" height="512"></button>
+</div><p class="picker-note">Meet them here. Start your adventure in the app.</p></div></div></section>
+<section class="section wrap parents" id="grown-ups"><div><p class="eyebrow">A little peace of mind</p><h2>Made for kids.<br>Thought through<br>for grown-ups.</h2><p class="parent-intro">Their world is full of little discoveries. This one comes with some reassuring ground rules.</p><a class="text-link" href="privacy/">Our privacy promise <span aria-hidden="true">↗</span></a></div><div class="parent-details"><article><span aria-hidden="true">01</span><div><h3>Just play. No pressure.</h3><p>No ads, no in-app purchases, no tracking. The gems and goodies are earned by brushing.</p></div></article><article><span aria-hidden="true">02</span><div><h3>Your family, your rhythm.</h3><p>Separate buddies and progress for each child. Set reminders, turn on quiet mode, and make it work for your mornings.</p></div></article><article><span aria-hidden="true">03</span><div><h3>Ready without an account.</h3><p>Start playing without signing up. Add an account only if you’d like to sync progress between devices.</p></div></article><article><span aria-hidden="true">04</span><div><h3>Grown-up things stay grown-up.</h3><p>Accounts and settings sit behind a parental gate. We never ask for your child’s real name, photo, or location.</p></div></article></div></section>
+<section class="clinic wrap"><div class="clinic-art"><img src="img/jess-keely.png" alt="Illustrated dental team holding toothbrushes" loading="lazy" width="1024" height="1024"></div><div><p class="eyebrow">A little local love</p><h2>From Victoria,<br>with a big smile.</h2><p>Made with Bowker Creek Dental in Victoria, British Columbia. A little bit of the friendly feeling at the dentist, brought home to your bathroom sink.</p><p class="clinic-note">Part of the Bowker Creek Dental family? Ask the clinic about earning real prize tickets through the app.</p></div></section>
+<section class="faq wrap section"><div><p class="eyebrow">Before the first brush</p><h2>A few things<br>you might wonder.</h2><a class="text-link" href="support/">More help & support <span aria-hidden="true">↗</span></a></div><div class="questions"><details><summary>Is Sparkle Buddies really free?</summary><p>Yes. There are no in-app purchases and no ads. Buddies earn their rewards through brushing, not spending.</p></details><details><summary>What ages is it for?</summary><p>Sparkle Buddies is designed for children aged 3–8. Younger brushers get a grown-up turn built into the session, and the brushing level can change as they become more independent.</p></details><details><summary>Can my children share a device?</summary><p>Yes! Each child can have their own profile, buddy, and brushing progress on the same device.</p></details><details><summary>Do we need to be patients at Bowker Creek Dental?</summary><p>No. Any family can enjoy the brushing adventures. The clinic’s real-world prize tickets are an extra for Bowker Creek Dental families.</p></details><details><summary>Which devices can we use?</summary><p>Download Sparkle Buddies from the App Store for iPhone and iPad. An optional account lets you sync your family’s progress between devices.</p></details></div></section>
+<section class="final-cta"><div class="wrap"><img src="img/buddies/penguin.webp" alt="Pip the penguin" loading="lazy" width="512" height="512"><div><p class="eyebrow">Your buddy is waiting</p><h2>Ready, set,<br>sparkle.</h2><a class="button" href="https://apps.apple.com/ca/app/id6810033480">Get Sparkle Buddies — it’s free <span aria-hidden="true">↗</span></a><p>Two minutes. Twice a day. Together.</p></div><span class="final-star" aria-hidden="true">✦</span></div></section>
+</main><footer class="wrap footer"><a class="brand" href="./"><span class="brand-star" aria-hidden="true">✦</span><span>Sparkle Buddies<span class="brand-dot">.</span></span></a><p>Little brushes. Big adventures.</p><nav aria-label="Footer navigation"><a href="privacy/">Privacy</a><a href="support/">Support</a></nav><small>© 2026 Jeremy Matheson</small></footer>
+</body></html>
